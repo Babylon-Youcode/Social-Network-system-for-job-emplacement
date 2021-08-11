@@ -16,7 +16,7 @@ class EmploiController extends Controller
     {
         $emplois = Emploi::all();
 
-        return view('home.home', [
+        return view('emploi', [
             'emplois' => $emplois
         ]);
     }
@@ -24,7 +24,7 @@ class EmploiController extends Controller
     {
         $emplois = Emploi::all();
 
-        return view('home.mesoffres', [
+        return view('emploi', [
             'emplois' => $emplois
         ]);
     }
@@ -53,11 +53,12 @@ class EmploiController extends Controller
      $emplois->ville = $request->ville;
      $emplois->condition = $request->condition;
      $emplois->datedebut = $request->datedebut;
+     $emplois->recruteur_id = $request->recruteur_id;
      $emplois->datefin = $request->datefin;
      $save = $emplois->save();
 
      if($save){
-        return redirect('home.mesoffres');
+        return redirect('emploi');
      }else{
          return back()->with('fail','Something went wrong, try again later');
      }
@@ -105,12 +106,12 @@ class EmploiController extends Controller
            
         ]);
         $emplois = Emploi::find($id);
-        $emplois->titre = $request->titre;
-        $emplois->domaine = $request->domaine;
-        $emplois->ville = $request->ville;
-        $emplois->condition= $request->condition;
-        $emplois->datedebut = $request->datedebut;
-        $emplois->datefin = $request->datefin;
+        $emplois->titre = $emploi->titre;
+        $emplois->domaine = $emploi->domaine;
+        $emplois->ville = $emploi->ville;
+        $emplois->condition= $emploi->condition;
+        $emplois->datedebut = $emploi->datedebut;
+        $emplois->datefin = $emploi->datefin;
         $emplois->save();
         return back();
     }
@@ -129,11 +130,12 @@ class EmploiController extends Controller
         $emplois->domaine = $request->input('domaine');
         $emplois->ville = $request->input('ville');
         $emplois->condition = $request->input('condition');
+        $emplois->recruteur_id = $request->input('recruteur_id');
         $emplois->datedebut = $request->input('datedebut');
         $emplois->datefin = $request->input('datefin');
         $save=  $emplois->save();
         if ($save) {
-        return redirect('home.mesoffres')->with('success','You have successfuly update your profile');
+        return redirect('emploi')->with('success','You have successfuly update your profile');
         }
     }
 
@@ -146,6 +148,6 @@ class EmploiController extends Controller
     public function destroy(emploi $emploi, $id)
     {
         Emploi::destroy(array('id',$id));
-        return redirect('home.mesoffres');
+        return redirect('emploi');
     }
 }

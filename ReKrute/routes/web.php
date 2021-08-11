@@ -23,20 +23,30 @@ use App\Models\User;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/emploi', function () {
+    return view('recruteur/emploi')->with('emplois',emploi::all());
+});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+
 Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
-Route::get('/home', 'App\Http\Controllers\EmploiController@index' );
+
+Route::get('/postuler',  [App\Http\Controllers\PostulerController::class, 'postuler'] );
+Route::get('/showPostuler',  [App\Http\Controllers\PostulerController::class, 'show'] );
+Route::get('/deletePostuler/{id}',  [App\Http\Controllers\PostulerController::class, 'deletePostuler'] );
 Route::get('/home.stages', [App\Http\Controllers\StageController::class, 'index'])->name('stages');
 Route::get('/home.profil', [App\Http\Controllers\UserController::class, 'index'])->name('profil');
 Route::get('update_profil/{id}', 'App\Http\Controllers\UserController@update' );
 Route::get('edit/{id}', 'App\Http\Controllers\UserController@edit' );
 Route::get('/home.mesoffres', [App\Http\Controllers\EmploiController::class, 'indexs'])->name('mesoffres');
 Route::post('/home/addProject',[EmploiController::class, 'create']);
+
 Route::get('update_emploi/{id}', 'App\Http\Controllers\EmploiController@update' );
+
 Route::get('edit/{id}', 'App\Http\Controllers\EmploiController@edit' );
+
 Route::get('delete/{id}', 'App\Http\Controllers\EmploiController@destroy' );
 
 

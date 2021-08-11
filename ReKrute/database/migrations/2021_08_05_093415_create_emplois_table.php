@@ -18,6 +18,7 @@ class CreateEmploisTable extends Migration
             $table->text("titre");
             $table->text("domaine");
             $table->text("ville");
+            $table->bigInteger('recruteur_id');
             $table->longtext("condition");
             $table->DATE("datedebut");
             $table->DATE("datefin");

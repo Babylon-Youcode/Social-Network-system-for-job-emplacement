@@ -37,6 +37,11 @@
     </header>
 
     <main>
+        @if(Session::get('success'))
+        <div class="alert alert-success">
+           {{ Session::get('success') }}
+        </div>
+      @endif
         <table class="table">
             <tr>
                 <td>Id</td>
@@ -56,7 +61,20 @@
                 <td>{{$emploi->condition}}</td>
                 <td>{{$emploi->datedebut}}</td>
                 <td>{{$emploi->datefin}}</td>
-                <td><button type="button" class="btn btn-success">Postuler</button></td>
+                <td>
+                 
+                    <form enctype="multipart/form-data" action="/postuler" method="GET">
+                        @csrf
+                           <input type="hidden" name="emploi_id" value='{{$emploi->id}}'>
+                           <input type="hidden" name="emploi_name" value='{{$emploi->titre}}'>
+                           <input type="hidden" name="recruteur_id" value='{{$emploi->recruteur_id}}'>
+                        <input type="hidden" name="candidate_id" value='{{Auth::user()->id }}'>
+                        <input type="hidden" name="candidate_name" value='{{Auth::user()->name }}'>
+                        <button type="submit" class="btn btn-success">  Postuler</button>
+                        </form>   
+  
+                
+                </td>
             </tr>
 
             @endforeach

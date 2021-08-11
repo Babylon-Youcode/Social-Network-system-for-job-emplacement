@@ -49,34 +49,8 @@
                              
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Numero de tel') }}</label>
-                        <div class="col-md-6">
-                            <input id="" type="number" class="form-control @error('num_tel') is-invalid @enderror" name="num_tel" value="{{ old('num_tel') }}" required autocomplete="num_tel">    
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Date de Naissance') }}</label>
-                    <div class="col-md-6">
 
-                        <input id="" type="date" class="form-control @error('dateNaiss') is-invalid @enderror" name="dateNaiss" value="{{ old('dateNaiss') }}" required autocomplete="dateNaiss">    
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
-                <div class="col-md-6">
-
-                    <input id="" type="text" class="form-control @error('Description') is-invalid @enderror" name="Description" value="{{ old('Description') }}" required autocomplete="Description">    
-            </div>
-        </div>
-
-    <div class="form-group row">
-        <label for="cv" class="col-md-4 col-form-label text-md-right">{{ __('cv') }}</label>
-        <div class="col-md-6">
-
-            <input id="cv" type="file" class="form-control @error('cv') is-invalid @enderror" name="cv" value="{{ old('cv') }}" required autocomplete="cv">    
-    </div>
-</div>
+   
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

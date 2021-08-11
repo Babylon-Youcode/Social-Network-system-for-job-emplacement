@@ -2,7 +2,7 @@
    
 namespace App\Http\Controllers;
 use App\Models\User;
-
+use App\Models\emploi;
 use Illuminate\Http\Request;
    
 class HomeController extends Controller
@@ -22,9 +22,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function home()
     {
-        return view('home.home');
+     
+        $emplois = Emploi::all();
+
+        return view('home.home', [
+            'emplois' => $emplois
+        ]);
     }
   
     /**
@@ -36,8 +41,8 @@ class HomeController extends Controller
     {
         $users = User::all();
 
-        return view('adminHome', [
+        return view('recruteur.adminHome', [
             'users' => $users
-        ]);    }
+        ]); }
     
 }
