@@ -56,6 +56,7 @@
                 <td>{{$stage->condition}}</td>
                 <td>{{$stage->datedebut}}</td>
                 <td>{{$stage->datefin}}</td>
+                <td><button type="button" class="btn btn-success">Postuler</button></td>
             </tr>
 
             @endforeach

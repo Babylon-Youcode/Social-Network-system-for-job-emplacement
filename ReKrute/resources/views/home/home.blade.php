@@ -56,6 +56,7 @@
                 <td>{{$emploi->condition}}</td>
                 <td>{{$emploi->datedebut}}</td>
                 <td>{{$emploi->datefin}}</td>
+                <td><button type="button" class="btn btn-success">Postuler</button></td>
             </tr>
 
             @endforeach

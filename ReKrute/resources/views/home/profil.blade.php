@@ -39,7 +39,7 @@
     <main>
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Profile</h1>
-            <button type="submit" data-toggle="modal" class="btn mt-1  btn-success  "  data-target="#update-modal"  >Update Profile <i class="fas fa-user"></i></button>     
+            <button type="submit" data-toggle="modal" class="btn mt-1  btn-primary  "  data-target="#update-modal"  >Update Profile <i class="fas fa-user"></i></button>     
           </div>
           @if(Session::get('success'))
           <div class="alert alert-success">
@@ -50,6 +50,10 @@
             <div class="col m-4">
                <h3>Name :<p class='m-4 text-muted'>{{Auth::user()->name}}</p></h3>
                <h3>Email :  <p class='m-4 text-muted'>{{Auth::user()->email}}</p></h3>
+               <h3>Numero de telephone :  <p class='m-4 text-muted'>{{Auth::user()->num_tel}}</p></h3>
+               <h3>Date de Naissance :  <p class='m-4 text-muted'>{{Auth::user()->dateNaiss}}</p></h3>
+               <h3>Description :  <p class='m-4 text-muted'>{{Auth::user()->Description}}</p></h3>
+               <h3>Mon cv :  <a href="" class='m-4 text-muted'>{{Auth::user()->cv}}</a></h3>
            </div>
            </div>
        
@@ -69,7 +73,7 @@
                      </button>
                    </div>
                    <div class="modal-body">
-                     <form enctype="multipart/form-data" action="/client/update/{{Auth::user()->id}}" method="post">
+                     <form enctype="multipart/form-data" action="../update_profil/{{Auth::user()->id}}" method="GET">
                         @csrf
                         <div class="form-group">
                               <label>Name</label>
@@ -79,8 +83,24 @@
                               <label>Email</label>
                               <input type="text" class="form-control" name="email" value="{{Auth::user()->email}}">
                            </div>
+                           <div class="form-group">
+                                <label>Num de Tel</label>
+                                <input type="number" class="form-control" name="num_tel" value="{{Auth::user()->num_tel}}">
+                         </div>
+                         <div class="form-group">
+                            <label>Date de Naissance</label>
+                            <input type="date" class="form-control" name="dateNaiss" value="{{Auth::user()->dateNaiss}}">
+                         </div>
+                         <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="Description" value="{{Auth::user()->Description}}">
+                         </div>
+                         <div class="form-group">
+                            <label>Mon cv</label>
+                            <input type="file" class="form-control" name="cv" value="{{Auth::user()->cv}}">
+                         </div>
 
-                           <button type="submit" class="btn btn-block btn-success">Update</button>
+                           <button type="submit" class="btn btn-block btn-primary">Update</button>
                         </form>   
                     </div>
                  </div>

@@ -22,7 +22,7 @@
                 <span>offres de stages</span></a>
             </li>
             <li>
-                <a href=""><span class="las la-users"></span>
+                <a href="{{ route('mesoffres') }}"><span class="las la-users"></span>
                 <span>mes offres</span></a>
             </li>
         </ul>

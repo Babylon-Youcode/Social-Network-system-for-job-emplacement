@@ -31,5 +31,12 @@ Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome
 Route::get('/home', 'App\Http\Controllers\EmploiController@index' );
 Route::get('/home.stages', [App\Http\Controllers\StageController::class, 'index'])->name('stages');
 Route::get('/home.profil', [App\Http\Controllers\UserController::class, 'index'])->name('profil');
+Route::get('update_profil/{id}', 'App\Http\Controllers\UserController@update' );
+Route::get('edit/{id}', 'App\Http\Controllers\UserController@edit' );
+Route::get('/home.mesoffres', [App\Http\Controllers\EmploiController::class, 'indexs'])->name('mesoffres');
+Route::post('/home/addProject',[EmploiController::class, 'create']);
+Route::get('update_emploi/{id}', 'App\Http\Controllers\EmploiController@update' );
+Route::get('edit/{id}', 'App\Http\Controllers\EmploiController@edit' );
+Route::get('delete/{id}', 'App\Http\Controllers\EmploiController@destroy' );
 
 
